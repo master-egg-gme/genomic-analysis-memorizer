@@ -1,18 +1,44 @@
 package com.gme.genomic.analysis.config.memorizer.model.tool;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import com.gme.genomic.analysis.config.memorizer.model.shared.ToolParameter;
 
-@MappedSuperclass
-public abstract class Tool
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
+
+@Entity
+@Table
+public class Tool implements Serializable
 {
 
     @Id
-    @Column(name = "ID", nullable = false, unique = true)
+    @Column(name = "id", nullable = false, unique = true)
     private Integer id;
 
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "tool")
+    private Set<ToolParameter> toolParameters;
+
+    public Tool() {
+    }
+
+    public Set<ToolParameter> getToolParameters() {
+        return toolParameters;
+    }
+
+    public void setToolParameters(Set<ToolParameter> toolParameters) {
+        this.toolParameters = toolParameters;
+    }
+
+    public void addToolParameter(ToolParameter toolParameter)
+    {
+        this.toolParameters.add(toolParameter);
+        if (toolParameter.getTool() != this)
+        {
+            toolParameter.setTool(this);
+        }
+    }
 
 }
