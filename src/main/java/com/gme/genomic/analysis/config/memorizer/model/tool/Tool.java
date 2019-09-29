@@ -12,10 +12,10 @@ public class Tool implements Serializable
 {
 
     @Id
-    @Column(name = "id", nullable = false, unique = true)
-    private Integer id;
+    @Column(name = "TOOL_ID", nullable = false, unique = true)
+    private Integer toolId;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "TOOL_NAME", nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "tool")

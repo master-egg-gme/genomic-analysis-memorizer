@@ -1,7 +1,6 @@
 package com.gme.genomic.analysis.config.memorizer.model;
 
 import com.gme.genomic.analysis.config.memorizer.model.tool.Tool;
-import com.sun.javafx.beans.IDProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,8 +11,11 @@ import java.util.List;
 public class Step implements Serializable {
 
     @Id
-    @Column(name = "ID", nullable = false, unique = true)
-    private long toolId;
+    @Column(name = "STEP_ID", nullable = false, unique = true)
+    private long  stepId;
+
+    @Column(name = "STEP_NAME", nullable = false)
+    private  String stepName;
 
     @OneToMany(mappedBy = "toolId")
     private List<Tool> tools;
@@ -21,8 +23,16 @@ public class Step implements Serializable {
     public Step() {
     }
 
+    public Step(long stepId, String stepName) {
+        this.stepId = stepId;
+        this.stepName = stepName;
+    }
+
     public List<Tool> getTools() {
         return tools;
     }
 
+    public String getStepName() {
+        return stepName;
+    }
 }

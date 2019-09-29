@@ -4,15 +4,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 >
-    <persistence-unit name="gam-persister">
+    <persistence-unit name="persist" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="http://localhost:3306/mysql/gam_tool"/>
-            <property name="javax.persistence.jdbc.user" value="gam"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gam?serverTimezone=UTC"/>
+            <property name="javax.persistence.jdbc.user" value="andygg"/>
+            <property name="javax.persistence.jdbc.password" value="ag12982846"/>
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/> -->
         </properties>
     </persistence-unit>
 </persistence>

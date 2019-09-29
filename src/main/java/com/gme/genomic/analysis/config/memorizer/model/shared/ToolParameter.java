@@ -10,16 +10,15 @@ import java.io.Serializable;
 public class ToolParameter implements Serializable {
 
     @Id
-    @Column(name = "ID", nullable = false, unique = true)
+    @Column(name = "PARAMETER_ID", nullable = false, unique = true)
     private long parameterId;
 
-    @Column(name = "KEY")
-    private String parameterKey;
+    @Column(name = "PARAMETER_NAME", nullable = false)
+    private String parameterName;
 
-    @Column(name = "VALUE")
+    @Column(name = "PARAMETER_VALUE")
     private String parameterValue;
 
-    @Column(name = "TOOL_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TOOL_ID")
     private Tool tool;
@@ -27,9 +26,9 @@ public class ToolParameter implements Serializable {
     public ToolParameter() {
     }
 
-    public ToolParameter(long parameterId, String parameterKey, String parameterValue) {
+    public ToolParameter(long parameterId, String parameterName, String parameterValue) {
         this.parameterId = parameterId;
-        this.parameterKey = parameterKey;
+        this.parameterName = parameterName;
         this.parameterValue = parameterValue;
     }
 
